@@ -4,9 +4,6 @@ bliz.gl = {}
 bliz.al = {}
 bliz.file = {}
 bliz.net = {}
-bliz.font = {
-    ["ARIAL"] = tostring(GetPluginPath() .. "data/resources/fonts/arial.ttf"),
-}
 
 XPLM_NAV_NOT_FOUND = -1
 
