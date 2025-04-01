@@ -1128,7 +1128,13 @@ function bliz.StartCameraControl(func)
     return StartCameraControl(func)
 end
 
+--- @param id number
+function bliz.StopCameraControl()
+    StopCameraControl()
+end
+
 --- @return controlled boolean
+--- @return duration number
 function bliz.IsCameraBeingControlled()
     return IsCameraBeingControlled()
 end
