@@ -201,6 +201,9 @@ XPLM_PROBEHITTERRAIN = 0
 XPLM_PROBEERROR = 1
 XPLM_PROBEMISSED = 2
 
+DECORATION_NONE = 0
+DECORATION_RECTANGLE = 1
+
 local zones = {}
 
 function bliz.Library(name)
@@ -367,6 +370,7 @@ function bliz.gl.DrawCustomText(id, text, x, y, size, align, color, id_font)
     DrawCustomText(id, text, x, y, size, align, color, id_font)
 end
 
+
 ---@param id_font font
 function bliz.gl.TestFont(id_font)
     TestFont(id_font)
@@ -414,6 +418,75 @@ function bliz.gl.DrawLine(id, x1, y1, x2, y2, lineWidth, color)
 end
 
 ---@param id integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
+---@param lineWidth integer
+---@param segments integer
+---@param color table
+function bliz.gl.DrawWideLine(id, x1, y1, x2, y2, lineWidth, segments, color)
+    DrawWideLine(id, x1, y1, x2, y2, lineWidth, segments, color)
+end
+
+---@param id integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
+---@param lineWidth integer
+---@param color table
+function bliz.gl.DrawLinePattern(id, x1, y1, x2, y2, lineWidth, color)
+    DrawLinePattern(id, x1, y1, x2, y2, lineWidth, color)
+end
+
+---@param id integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
+---@param lineWidth integer
+---@param color table
+function bliz.gl.DrawBezierLineQ(id, x1, y1, x2, y2, lineWidth, color)
+    DrawBezierLineQ(id, x1, y1, x2, y2, lineWidth, color)
+end
+
+---@param id integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
+---@param lineWidth integer
+---@param color table
+function bliz.gl.DrawBezierLineC(id, x1, y1, x2, y2, lineWidth, color)
+    DrawBezierLineC(id, x1, y1, x2, y2, lineWidth, color)
+end
+
+---@param id integer
+---@param x1 integer
+---@param y1 integer
+---@param x2 integer
+---@param y2 integer
+---@param lineWidth integer
+---@param color table
+function bliz.gl.DrawArc(id, x1, y1, x2, y2, lineWidth, color)
+    DrawArc(id, x1, y1, x2, y2, lineWidth, color)
+end
+
+---@param id integer
+---@param x integer
+---@param y integer
+---@param rx integer
+---@param ry integer
+---@param segments integer
+---@param filled boolean
+---@param lineWidth integer
+---@param color table
+function bliz.gl.DrawEllipse(id, x, y, rx, ry, segments, filled, lineWidth, color)
+    DrawEllipse(id, x, y, rx, ry, segments, filled, lineWidth, color)
+end
+
+---@param id integer
 ---@param x integer
 ---@param y integer
 ---@param radius integer
@@ -442,6 +515,31 @@ function bliz.gl.LoadTexture(path)
     return LoadTexture(path)
 end
 
+---@param path string
+---@param x integer
+---@param y integer
+---@param width integer
+---@param height integer
+---@return number
+function bliz.gl.LoadTextureRegion(path, x, y, width, height)
+    return LoadTextureRegion(path, x, y, width, height)
+end
+
+---@param id number
+---@param x integer
+---@param y integer
+---@param width integer
+---@param height integer
+function bliz.gl.BeginClip(id, x, y, width, height)
+    return BeginClip(id, x, y, width, height)
+end
+
+---@param id number
+function bliz.gl.EndClip(id)
+    return EndClip(id)
+end
+
+
 ---@param id integer
 ---@param x integer
 ---@param y integer
@@ -450,6 +548,19 @@ end
 ---@param texID integer
 function bliz.gl.DrawTexture(id, x, y, width, height, texID)
     DrawTexture(id, x, y, width, height, texID)
+end
+
+---@param id integer
+---@param x integer
+---@param y integer
+---@param width integer
+---@param height integer
+---@param deg integer
+---@param anchorX integer
+---@param anchorY integer
+---@param texID integer
+function bliz.gl.DrawRotatedTexture(id, x, y, width, height, deg, anchorX, anchorY, texID)
+    DrawRotatedTexture(id, x, y, width, height, deg, anchorX, anchorY, texID)
 end
 
 ---@param path_acf string
@@ -1011,6 +1122,11 @@ function bliz.GetClipboardText()
     return GetClipboardText()
 end
 
+---@param clip string
+function bliz.SetClipboardText(clip)
+    return SetClipboardText(clip)
+end
+
 ---@param lat1 number
 ---@param lon1 number
 ---@param lat2 number
@@ -1056,6 +1172,14 @@ end
 --- @return string|nil error
 function bliz.net.SendHTTPRequest(url, method, headers, body)
     return SendHTTPRequest(url, method, headers, body)
+end
+
+--- @param url string
+--- @param path string
+--- @return string|nil response
+--- @return string|nil error
+function bliz.net.DownloadFileFromURL(url, path)
+    return DownloadFileFromURL(url, path)
 end
 
 --- @param lat number
@@ -1205,4 +1329,90 @@ end
 --- @return cycle number
 function bliz.getCurrentCycle()
     return getCurrentCycle()
+end
+
+--- @param title string
+--- @param description string
+--- @param time number
+function bliz.CreateNotification(title, description, time)
+    CreateNotification(title, description, time)
+end
+
+--- @param func function
+--- @param num integer
+function bliz.RegisterUpdateCallback(func, num)
+    RegisterUpdateCallback(func, num)
+end
+
+--- @param func function
+function bliz.UnregisterUpdateCallback(func)
+    UnregisterUpdateCallback(func)
+end
+
+--- @param title string
+--- @param message string
+--- @param lifetime integer
+function bliz.CreateNotification(title, message, lifetime)
+    CreateNotification(title, message, lifetime)
+end
+
+--- @param text string
+function bliz.CreateWarning(text)
+    CreateWarning(text)
+end
+
+--- @param text string
+--- @param funcYes function
+--- @param funcNo function
+function bliz.CreateYesNoWarning(text, funcYes, funcNo)
+    CreateYesNoWarning(text, funcYes, funcNo)
+end
+
+--- @param path string
+--- @return number id
+function bliz.al.LoadSound(path)
+    return LoadSound(path)
+end
+
+--- @param id number
+--- @return boolean success
+function bliz.al.Playsound(id)
+    return PlaySound(id)
+end
+
+--- @param id number
+--- @return boolean success
+function bliz.al.StopSound(id)
+    return StopSound(id)
+end
+
+--- @param id number
+--- @return boolean success
+function bliz.al.PauseSound(id)
+    return PauseSound(id)
+end
+
+--- @param id number
+--- @return boolean success
+function bliz.al.ResumeSound(id)
+    return ResumeSound(id)
+end
+
+--- @param id number
+--- @return number duration
+function bliz.al.GetSoundDuration(id)
+    return GetSoundDuration(id)
+end
+
+--- @param id number
+--- @return number offset
+function bliz.al.GetPlaybackOffset(id)
+    return GetPlaybackOffset(id)
+end
+
+--- @param id number
+--- @param offset number
+--- @return boolean success
+function bliz.al.SetPlaybackOffset(id, offset)
+    return SetPlaybackOffset(id, offset)
 end
