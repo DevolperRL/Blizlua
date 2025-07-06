@@ -1,20 +1,26 @@
-Non-Commercial, Non-Payware License
+BlizLua Free License  
 Copyright (c) 2025 Raoul Origa
 
 Usage Rights:
 You are free to:
-	- Use, modify, and distribute this software/code
-	- Use in personal, educational, or open-source projects
-	- You may ask donation for your project
+    - Use and integrate this software in any project, including personal, freeware, and commercial/payware aircraft or plugins
+    - Modify the software for use in your own projects
+    - Distribute this software as part of your project (compiled or bundled)
+
+Requirements:
+You MUST:
+    - Include this license in your distribution or documentation
+    - Credit the use of BlizLua visibly (e.g., in documentation, about window, or aircraft manual) with wording like:
+      “Powered by BlizLua by Raoul Origa”
 
 Restrictions:
 You MAY NOT:
-	- Use this software in any paid/commercial product ("payware")
-	- Sell, rent, or monetize this software directly or indirectly
-	- Remove this license text from distributed copies
+    - Sell or rent BlizLua itself as a standalone product
+    - Misrepresent BlizLua as your own work
+    - Remove this license text when distributing modified versions
 
 Disclaimer:
-This software is provided "AS IS" without warranties. The author holds no liability for damages arising from its use.
+This software is provided "AS IS" without warranty of any kind. The author is not liable for any damages resulting from its use.
 
 Violations:
-Any breach of these terms automatically terminates your rights under this license.
+Use of this software without following the above terms immediately voids your rights under this license.
